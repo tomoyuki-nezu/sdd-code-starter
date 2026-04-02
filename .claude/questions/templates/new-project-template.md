@@ -41,13 +41,14 @@
 - C) その他（自由記述）
 
 **選択肢（実行環境）**
-- A) Lambda + API Gateway（サーバーレス）
-- B) ECS + Fargate（コンテナ）
-- C) その他（自由記述）
+- A) サーバーレス（例: AWS Lambda, Cloud Functions, Vercel）
+- B) コンテナ（例: ECS, Cloud Run, Kubernetes）
+- C) VM / VPS
+- D) その他（自由記述）
 
 **選択肢（データストア）**
-- A) DynamoDB
-- B) RDS（PostgreSQL）
+- A) NoSQL（例: DynamoDB, Firestore, MongoDB）
+- B) RDB（例: PostgreSQL, MySQL）
 - C) 使用しない
 - D) その他（自由記述）
 
@@ -60,7 +61,7 @@ API の概要を教えてください。
 
 **回答形式**
 - エンドポイント一覧（概要）:
-- 認証方式: なし / API Key / Cognito / その他
+- 認証方式: なし / API Key / OAuth / JWT / その他
 - レスポンス形式: JSON（デフォルト）/ その他
 
 ---
@@ -76,8 +77,9 @@ API の概要を教えてください。
 - C) その他（自由記述）
 
 **回答形式**
-- リージョン: ap-northeast-1（デフォルト）/ その他
-- 既存の AWS 設定（OIDC・IAM Role）を流用する: はい / いいえ
+- クラウドプロバイダー: AWS / GCP / Azure / その他 / なし
+- リージョン:
+- 既存のクラウド設定（CI/CD 認証など）を流用する: はい / いいえ
 
 ---
 
@@ -124,8 +126,9 @@ Q3:
 
 Q4:
 - 環境構成:
+- クラウドプロバイダー:
 - リージョン:
-- 既存の AWS 設定を流用する:
+- 既存のクラウド設定を流用する:
 
 Q5:
 - 自動デプロイのトリガー:

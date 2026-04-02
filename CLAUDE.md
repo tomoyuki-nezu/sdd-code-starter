@@ -13,16 +13,16 @@
 ### 技術スタック
 - 言語: <LANGUAGE>
 - フレームワーク: <FRAMEWORK>
-- IaC: AWS SAM（template.yaml）
+- IaC: <IAC_TOOL>
 - データストア: <DATASTORE>
-- テスト: pytest
+- テスト: <TEST_FRAMEWORK>
 - CI/CD: GitHub Actions
 
 ### ディレクトリ構成
 - spec/                      : 仕様書（Single Source of Truth）
 - src/                       : ソースコード
 - tests/                     : テストコード（unit/ / e2e/）
-- template.yaml              : SAM テンプレート（インフラ定義）
+- <!-- IaC 定義ファイル（例: template.yaml）を記載 -->
 - docs/universal/            : 汎用ドキュメント（プロジェクト横断）
 - docs/project/              : プロジェクト固有ドキュメント
 - .claude/skills/common/     : 汎用 Skills（プロジェクト横断）
@@ -32,14 +32,15 @@
 ### 命名規約
 <!-- プロジェクトの命名規約を記載 -->
 - API エンドポイント: /<resource>, /<resource>/{id}
-- Lambda 関数名: <FUNCTION_NAME>
+- 関数/サービス名: <FUNCTION_NAME>
 
-### Python 環境
-- バージョン管理: pyenv（`pyenv local` でプロジェクト固定）
-- 仮想環境: `.venv/`（`python -m venv .venv` で作成）
-- パッケージは必ず仮想環境内にインストールすること（グローバル汚染禁止）
-- テスト・コマンド実行前に仮想環境を有効化すること: `source .venv/bin/activate`
-- 依存パッケージ: `src/requirements.txt`（本番用）、`pip install pytest`（テスト用）
+### 開発環境
+<!-- 言語・パッケージマネージャに応じて記載 -->
+<!-- 例（Python の場合）: -->
+<!-- - バージョン管理: pyenv（`pyenv local` でプロジェクト固定） -->
+<!-- - 仮想環境: `.venv/`（`python -m venv .venv` で作成） -->
+<!-- - パッケージは必ず仮想環境内にインストールすること（グローバル汚染禁止） -->
+<!-- - 依存パッケージ: `src/requirements.txt`（本番用） -->
 
 ---
 
@@ -95,9 +96,9 @@
 5. 完了後にステータスを「実行済み」に更新してコミットする
 
 ### 禁止事項
-- ハードコードされた AWS アカウント ID・ARN
+- ハードコードされたクラウドアカウント ID・リソース識別子
 - ハードコードされたシークレット・パスワード
-- テストコード内の実際の AWS リソースへのアクセス
+- テストコード内の実際のクラウドリソースへのアクセス
 
 ---
 
@@ -117,5 +118,6 @@
 ### プロジェクト固有 Skills（`.claude/skills/project/`）
 <!-- プロジェクトに合わせてスキルを追加する -->
 <!-- 例: -->
-<!-- | `python-lambda.md` | Lambda ハンドラの構造・規約 | -->
-<!-- | `sam-architect.md` | SAM テンプレートの設計原則 | -->
+<!-- 例: -->
+<!-- | `python-fastapi.md` | FastAPI の構造・規約 | -->
+<!-- | `terraform.md` | Terraform の設計原則 | -->

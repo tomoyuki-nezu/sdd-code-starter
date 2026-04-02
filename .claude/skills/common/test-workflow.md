@@ -45,7 +45,7 @@ pytest tests/unit/ -v
 ローカル環境:
 
 ```bash
-docker compose up -d  # DynamoDB Local が起動していることを確認
+docker compose up -d  # ローカルサービスが起動していることを確認
 ENV=local bash tests/e2e/test_api.sh
 ```
 

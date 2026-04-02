@@ -16,10 +16,10 @@ allowed-tools: [Read, Write, Edit]
 - コミットメッセージは英語（git-workflow Skill に従う）
 
 ### 機密情報の取り扱い
-- AWS アカウント ID → `<YOUR_ACCOUNT_ID>`
-- IAM Role ARN → `<YOUR_ROLE_ARN>`
-- SSO URL → `<YOUR_SSO_URL>`
-- API Gateway URL → `https://<YOUR_API_ID>.execute-api.ap-northeast-1.amazonaws.com/Prod`
+- クラウドアカウント ID → `<YOUR_ACCOUNT_ID>`
+- 認証用ロール/サービスアカウント → `<YOUR_ROLE>`
+- SSO / 認証 URL → `<YOUR_AUTH_URL>`
+- API エンドポイント URL → `<YOUR_API_URL>`
 - プロファイル名 → `<YOUR_PROFILE_NAME>`
 
 ### ドキュメントの種類と配置
@@ -39,7 +39,7 @@ allowed-tools: [Read, Write, Edit]
 6. Claude Code を使った開発フロー
 7. デプロイ後の確認方法
 8. トラブルシューティング
-9. AWS リソース一覧
+9. インフラリソース一覧
 
 ### 記述スタイル
 - 箇条書きとテーブルを活用する
