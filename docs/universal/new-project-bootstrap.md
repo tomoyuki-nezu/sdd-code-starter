@@ -30,18 +30,13 @@ Cursor で `CLAUDE.md` を開き、プロジェクト固有設定セクション
 claude
 ```
 
-以下のプロンプトを渡す：
+以下のプロンプトを渡す（このまま貼り付けてください）：
 
 ```
-新しいプロジェクトを始めます。以下のドキュメントを読み込んでください：
-- CLAUDE.md
-- docs/universal/new-project-bootstrap.md
-- docs/universal/question-document-spec.md
-- .claude/questions/templates/new-project-template.md
-
-読み込んだ後、new-project-template.md を元に本日の日付で
-質問ドキュメントを .claude/questions/ に作成してください。
-私が回答を記入したら『回答を読んで実行して』と伝えます。
+新しいプロジェクトを始めます。
+CLAUDE.md と .claude/skills/ と docs/universal/ を読み込んでください。
+読み込んだら、.claude/questions/templates/new-project-template.md を元に
+質問ドキュメントを作成してください。
 ```
 
 ### Step 4：質問ドキュメントに回答（Cursor）
@@ -72,6 +67,21 @@ Claude Code に「回答を読んで実行して」と伝える。以降は Clau
    - README.md とプロジェクト固有ドキュメントの作成
 3. テスト実行・検証
 4. コミット
+
+## プロジェクト生成後の開発フロー
+
+初期化が完了したら、以降は以下のフレーズで Claude Code に指示できます:
+
+| やりたいこと | Claude Code への指示 |
+|---|---|
+| 仕様変更の反映 | `spec/api/xxx.yaml の変更を読み込んで、コードとテストを更新して` |
+| テスト実行 | `テストして` |
+| エラー修正 | `エラーを解析して` |
+| コミット | `コミットして` |
+| プッシュ | `プッシュして` |
+| ドキュメント更新 | `README を更新して` |
+
+複雑な判断が必要な場合は Claude Code が自動的に質問ドキュメントを作成します。Cursor で回答を記入し「回答を読んで実行して」と伝えてください。
 
 ## Step 5 完了後に人間が行う作業
 
