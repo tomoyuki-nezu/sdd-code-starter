@@ -51,9 +51,37 @@
 
 ### 新規プロジェクト開始時（質問ファースト）
 
-- Human が「まず質問して」「新しいプロジェクトを始めます」などと伝えたら、**仕様書・ソースコード・CI 定義の生成に着手する前に**、`.claude/questions/templates/new-project-template.md` と `docs/universal/question-document-spec.md` に従い、**質問ドキュメント**を `.claude/questions/YYYYMMDD-<topic>.md` に作成する。
+Human が「**プロジェクトを開始します**」「新しいプロジェクトを始めます」「まず質問して」など、新規開始の意図を伝えたら、次の順で進めること。
+
+#### 0. プロジェクト開始時に Human へ必ず伝えること（ドキュメントの整理）
+
+Human が **既にすべてのドキュメントを揃えているとは限らない**。そのため、質問ドキュメントを作成する**前に**（または作成と同じ返答の冒頭で）、次の **3 区分** で整理して口頭（チャット）で伝えること。
+
+1. **スターターに既にあり、このリポジトリで前提として読むドキュメント**（現時点では主に参照・遵守。パスを列挙する）
+   - `CLAUDE.md`（汎用ルール・このファイルの指示）
+   - `spec/constitution.md`（Green/Yellow/Red Zone）
+   - `docs/universal/` 配下（例: `sdd-principles.md`, `question-document-spec.md`, `new-project-bootstrap.md`, `security-settings.md`, `agent-workflow.md`, `error-workflow.md`）
+   - `.claude/skills/` 各 `SKILL.md`（運用ルール）
+   - `.claude/settings.json` / `docs/universal/security-settings.md`（セキュリティ前提）
+
+2. **このプロジェクトの進行にあたり、あらかじめ整理・整備しておくとよいドキュメント（中身はまだ空でもよい）**（役割と配置先を説明する）
+   - **仕様の Single Source of Truth:** `spec/`（初期化後は API 仕様などをここに置く想定）
+   - **プロジェクト固有の説明:** `docs/project/`（アーキテクチャメモ、運用手順、チーム合意事項など）
+   - **リポジトリの入口:** ルート `README.md`（セットアップ・開発フロー）
+   - **意思決定の記録:** `.claude/questions/*.md`（質問ドキュメント。テンプレは `.claude/questions/templates/`）
+
+3. **質問ドキュメントで項目として取りにいく内容**（テンプレの Q1〜Q7 に相当。ここで決めたことを後から `CLAUDE.md` や `docs/project/` に反映する）
+
+伝えたうえで、**会話だけで足りる確認**（今日のトピック名、すでに存在する社内ドキュメントの URL など）があれば短く聞き、必要なら質問ドキュメントの「追加コメント」に書き写すよう Human に促す。
+
+#### 1. 質問ドキュメントの作成
+
+上記の整理の**後**（同一メッセージ内でよい）、`.claude/questions/templates/new-project-template.md` と `docs/universal/question-document-spec.md` に従い、**質問ドキュメント**を `.claude/questions/YYYYMMDD-<topic>.md` に作成する。
+
+#### 2. プレースホルダと実行タイミング
+
 - 質問ドキュメントの回答が揃うまで、`CLAUDE.md` のプロジェクト固有セクションは **プレースホルダのままでよい**（推測で埋めない）。
-- Human が回答を記入し「**回答を読んで実行して**」と伝えたら、`question-doc` Skill の手順に従い解釈・サマリー・承認を経てから実行する。実行内容に **このセクションのプレースホルダ更新** を含めること。
+- Human が回答を記入し「**回答を読んで実行して**」と伝えたら、`question-doc` Skill の手順に従い解釈・サマリー・承認を経てから実行する。実行内容に **このセクションのプレースホルダ更新** と、必要に応じた **`docs/project/` ・ `spec/` の初版** を含めること。
 
 ### コード生成ルール
 - すべての関数に型アノテーションを付与すること

@@ -37,7 +37,7 @@ SDD プロジェクトでは、3つのエージェント（ツール）が役割
 
 ## 新規プロジェクト開始時
 
-**質問ドキュメントを先に作る。** Human が「まず質問して」などと伝えたら、Claude Code は `CLAUDE.md` の「新規プロジェクト開始時（質問ファースト）」に従い、コード生成の前に `.claude/questions/templates/new-project-template.md` を基に質問ドキュメントを作成する。手順の詳細は `docs/universal/new-project-bootstrap.md` を参照。
+**質問ドキュメントを先に作る。** Human が「**プロジェクトを開始します**」などと伝えたら、Claude Code は `CLAUDE.md` の「新規プロジェクト開始時（質問ファースト）」に従う。質問ドキュメントを書く**前に**（または同一返答の冒頭で）、スターターに既にあるドキュメントと、プロジェクトであらかじめ整理しておくとよいドキュメント（`spec/`、`docs/project/`、`README.md` 等）を Human に整理して伝えたうえで、`.claude/questions/templates/new-project-template.md` を基に質問ドキュメントを作成する。手順の詳細は `docs/universal/new-project-bootstrap.md` を参照。
 
 ## Claude Code のスキル体系
 

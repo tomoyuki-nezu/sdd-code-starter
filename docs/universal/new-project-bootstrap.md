@@ -25,7 +25,7 @@ cp -R /path/to/claude-code-starter/. .
 
 この時点では **`CLAUDE.md` のプレースホルダーを手で埋めなくてよい**（回答確定後に Claude Code が反映する）。
 
-### Step 2：Claude Code を起動し、質問から始める
+### Step 2：Claude Code を起動し、プロジェクトを開始する
 
 ```bash
 claude
@@ -34,15 +34,28 @@ claude
 **短いプロンプト（推奨）** — そのまま貼り付け可：
 
 ```
-新しいプロジェクトを始めます。まず私に質問してください。
+プロジェクトを開始します。
 ```
 
-`CLAUDE.md` の「新規プロジェクト開始時（質問ファースト）」に従い、Claude Code は `.claude/questions/templates/new-project-template.md` を基に質問ドキュメントを `.claude/questions/` に作成する。
+`CLAUDE.md` の「新規プロジェクト開始時（質問ファースト）」に従い、Claude Code は **先に**次を Human に伝える：
 
-**詳細を明示する場合（任意）**：
+1. スターターに**既に含まれている**ドキュメント（前提・参照先のパス）
+2. このプロジェクトで**あらかじめ整理しておくとよい**ドキュメント（`spec/`、`docs/project/`、ルート `README.md`、質問ドキュメントの役割など）
+3. **質問ドキュメント（Q1〜Q7）で決める**内容の概要
+
+そのうえで、`.claude/questions/templates/new-project-template.md` を基に質問ドキュメントを `.claude/questions/` に作成する。
+
+**切り分けを明示する場合（任意）**：
 
 ```
-新しいプロジェクトを始めます。
+プロジェクトを開始します。
+既にドキュメントで決まっていることと、質問ドキュメントで決めたいことを分けて伝えてから進めてください。
+```
+
+**テンプレを明示する場合（任意）**：
+
+```
+プロジェクトを開始します。
 docs/universal/question-document-spec.md と
 .claude/questions/templates/new-project-template.md に従い、
 本日の日付の質問ドキュメントを .claude/questions/ に作成してください。
