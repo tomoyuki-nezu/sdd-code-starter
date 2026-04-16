@@ -26,3 +26,9 @@ env.local.json
 
 # OS
 .DS_Store
+
+# LLM Context Files
+**/.ctx/**
+!**/.ctx/README.md
+.context/session-log.md
+# .context/decisions/ はコミット対象（設計判断を共有）
