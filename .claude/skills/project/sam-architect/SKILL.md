@@ -4,33 +4,23 @@ description: >
   AWS SAM によるサーバレス構成を設計・編集するとき。
   質問ドキュメントで AWS SAM が IaC として選ばれたプロジェクトで
   template やデプロイ手順の依頼を受けたとき。
+license: MIT
+compatibility: >
+  Claude Code。AWS SAM 採用時のみ。他クラウドでは別スキルを追加。
+  詳細は references/guidelines.md。
 allowed-tools: Read Write Bash
 metadata:
   author: claude-code-starter
-  version: 1.0.0
+  version: 1.1.0
   category: project
 ---
 
 # AWS SAM（プロジェクト用テンプレート）
 
-この Skill は **AWS SAM を採用した場合のみ** 有効とする。
-GCP（Cloud Functions / Cloud Run）、Azure Functions など別プロバイダのときは
-この Skill を使わず、同様のフォルダ構成でプロジェクト専用 Skill を追加すること。
+**AWS SAM を選んだプロジェクト専用。** それ以外のプロバイダでは使わない。
 
-## 適用前の確認
+## 参照（Progressive disclosure）
 
-質問ドキュメントまたは Human の回答で次が明らかであること：
+適用確認・設計原則・参照リンクの**全文**は次を読むこと：
 
-- デプロイ対象が AWS であること
-- IaC として SAM（`template.yaml` 等）を使うこと
-
-## 設計上の原則
-
-- アカウント ID・スタック名の実値をリポジトリに書かない
-- 本番スタックへのデプロイは Human の明示許可があるまで自動実行しない
-- `docs/universal/security-settings.md` と `.claude/settings.json` の制約を順守する
-
-## 参照
-
-- `spec/` の API・インフラ要件
-- `python-lambda` Skill（Python 実装と併用する場合）
+- `references/guidelines.md`

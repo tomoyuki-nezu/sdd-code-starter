@@ -40,13 +40,23 @@ allowedDomains に含まれていない URL への curl などは失敗します
 ### 拒否ルール（permissions.deny）
 
 以下のパターンをデフォルトでブロックしています：
-- .env ファイルへの読み取り・編集・書き込み
-- .pem / .key ファイルへの読み取り
-- rm -rf コマンド
-- chmod 777 コマンド
 
-ルールの評価順序：deny → ask → allow
+- .env 系ファイルへの Read / Glob / Edit / Write
+- Bash 経由の .env 読み取り（`cat` に加え `head` / `tail` / `less` / `more` / `open` / `grep` 等）
+- .pem / .key の読み取り（Read および Bash の `cat` / `head` / `tail`）
+- `rm -rf` / `chmod 777`
+
+**disableBypassPermissionsMode:** `disable` を設定し、`--dangerously-skip-permissions` による権限バイパスを無効化している（チーム運用時は Managed Settings での固定も推奨）。
+
+ルールの評価順序：deny → ask → allow  
 deny ルールは最優先で適用されます。
+
+#### 参考（コミュニティ記事）
+
+`.env` の Glob 禁止や Bash 経路の補強などは、外部解説とも整合させている：
+
+- [Claude Codeのセキュリティ設定を本気で固めた話【2026年版】（Zenn）](https://zenn.dev/momozaki/articles/10cf58b08de335)
+- [Claude Codeで行うべきセキュリティ設定 10選（Qiita）](https://qiita.com/miruky/items/51db293a7a7d0d277a5d)
 
 ### フック（hooks）
 
@@ -64,6 +74,18 @@ exit 2 でコマンドをブロック、exit 0 で許可します。
 - 確認: `jq --version`
 
 `jq` を使わないようにフックを書き換えることも可能です（プロジェクト方針に合わせてください）。
+
+### 会話・編集履歴（file-history）
+
+Claude Code は編集バックアップを `~/.claude/file-history/` に保存する場合がある。ディスク使用量が気になる場合は、手動または cron で定期的に削除する（例：`find ~/.claude/file-history -mindepth 1 -delete`）。**リポジトリの設定ではなく利用マシン側の運用**である。
+
+### .env の平文管理を避ける（dotenvx 等）
+
+平文の `.env` をリポジトリに載せない運用として、`dotenvx` 等での暗号化を検討する。導入時は公式手順に従い、**鍵ファイルを `.gitignore` する**こと。
+
+### より強い隔離（devcontainer）
+
+ホストから切り離してエージェントを動かす場合は、Anthropic が示す devcontainer リファレンスの利用を検討する。Claude Code 公式ドキュメントの Development Containers 項を参照すること。
 
 ## プロジェクト固有のカスタマイズ
 
@@ -101,6 +123,15 @@ Managed Settings の配置先：
 
 Managed Settings は Claude for Teams / Enterprise プランで
 リモート配信（Server-managed settings）も可能です。
+
+組織でポリシーを強制する場合の設定キー例（概要。詳細は公式ドキュメントと Qiita 記事を参照）：
+
+| キー（例） | 効果の概要 |
+|---|---|
+| disableBypassPermissionsMode | 権限バイパスモードの無効化 |
+| allowManagedPermissionRulesOnly | Managed 以外の allow/deny を無効化 |
+| allowManagedHooksOnly | 管理者フックのみ許可 |
+| allowManagedDomainsOnly | 許可ドメインを Managed のみに限定 |
 
 ## /permissions コマンドで定期確認
 

@@ -163,7 +163,7 @@ git push -u origin main
 | `.claude/skills/project/` | 固有 | スタックに合わせて追加・削除（不要なテンプレートは削除可） |
 | `docker-compose.yml` | 汎用 | そのまま流用し、必要に応じてサービスを追加 |
 | `.gitignore` | 汎用 | そのまま流用 |
-| `docs/universal/` | 汎用 | そのまま流用 |
+| `docs/universal/` | 汎用 | そのまま流用（`skills-authoring.md` は Skills 改訂時に参照） |
 | `.github/workflows/` | 半汎用 | CI に GitHub Actions を選んだ場合などに生成・バージョン調整 |
 | `docs/project/` | 固有 | 新規作成 |
 | `README.md` | 固有 | 新規作成または初期化で上書き |

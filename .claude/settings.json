@@ -30,6 +30,7 @@
     }
   },
   "permissions": {
+    "disableBypassPermissionsMode": "disable",
     "deny": [
       "Read(**/.env)",
       "Read(**/.env.*)",
@@ -40,11 +41,20 @@
       "Edit(**/.env*)",
       "Write(**/.env*)",
       "Bash(cat **/.env*)",
+      "Bash(head **/.env*)",
+      "Bash(tail **/.env*)",
+      "Bash(less **/.env*)",
+      "Bash(more **/.env*)",
+      "Bash(open **/.env*)",
       "Bash(grep * **/.env*)",
       "Bash(rm -rf *)",
       "Bash(chmod 777 *)",
       "Bash(cat **/*.pem)",
-      "Bash(cat **/*.key)"
+      "Bash(cat **/*.key)",
+      "Bash(head **/*.pem)",
+      "Bash(head **/*.key)",
+      "Bash(tail **/*.pem)",
+      "Bash(tail **/*.key)"
     ]
   },
   "hooks": {

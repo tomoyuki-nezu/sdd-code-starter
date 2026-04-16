@@ -25,22 +25,29 @@ claude-code-starter/
 │   ├── settings.json          # セキュリティ設定
 │   ├── hooks/
 │   │   └── validate-command.sh  # コマンド検証フック
-│   ├── skills/                # Anthropic 正式仕様：フォルダ＋SKILL.md
+│   ├── skills/                # 各フォルダに SKILL.md（詳細は references/ に分割可）
 │   │   ├── git-workflow/
-│   │   │   └── SKILL.md
+│   │   │   ├── SKILL.md
+│   │   │   └── references/
 │   │   ├── error-handling/
-│   │   │   └── SKILL.md
+│   │   │   ├── SKILL.md
+│   │   │   └── references/
 │   │   ├── test-workflow/
-│   │   │   └── SKILL.md
+│   │   │   ├── SKILL.md
+│   │   │   └── references/
 │   │   ├── doc-writer/
-│   │   │   └── SKILL.md
+│   │   │   ├── SKILL.md
+│   │   │   └── references/
 │   │   ├── question-doc/
-│   │   │   └── SKILL.md
+│   │   │   ├── SKILL.md
+│   │   │   └── references/
 │   │   └── project/           # プロジェクト用テンプレート（任意）
 │   │       ├── python-lambda/
-│   │       │   └── SKILL.md
+│   │       │   ├── SKILL.md
+│   │       │   └── references/
 │   │       └── sam-architect/
-│   │           └── SKILL.md
+│   │           ├── SKILL.md
+│   │           └── references/
 │   └── questions/
 │       └── templates/
 │           └── new-project-template.md
@@ -51,7 +58,8 @@ claude-code-starter/
         ├── agent-workflow.md
         ├── error-workflow.md
         ├── sdd-principles.md
-        └── security-settings.md
+        ├── security-settings.md
+        └── skills-authoring.md   # Anthropic Skills 公式準拠の書き方
 ```
 
 ## 使い方
@@ -139,6 +147,7 @@ docs/universal/question-document-spec.md と
 | `docs/universal/question-document-spec.md` | 質問ドキュメント仕様 |
 | `docs/universal/new-project-bootstrap.md` | 新規プロジェクト初期化手順 |
 | `docs/universal/security-settings.md` | Claude Code セキュリティ設定ガイド |
+| `docs/universal/skills-authoring.md` | Skills 構成（Anthropic 公式 PDF 準拠） |
 
 ### プレースホルダ一覧（`CLAUDE.md` ・回答後に反映）
 
@@ -168,6 +177,8 @@ docs/universal/question-document-spec.md と
 ### プロジェクト固有 Skills の追加
 .claude/skills/ に新しいフォルダを作成し、
 その中に SKILL.md を配置してください（Anthropic 正式仕様）。
+
+詳細は **`docs/universal/skills-authoring.md`** と [Anthropic の Skills 構築ガイド（PDF）](https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf) を参照。
 
 フォルダ名のルール：
 - kebab-case を使うこと（例: python-lambda）

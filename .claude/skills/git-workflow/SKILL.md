@@ -4,50 +4,25 @@ description: >
   Git の操作を行うとき。「コミットして」「プッシュして」
   「ブランチを作って」などの依頼を受けたとき。
   Conventional Commits 形式でメッセージを生成する。
+license: MIT
+compatibility: >
+  Claude Code。Bash で git を実行する。手順と規約の全文は
+  本スキル内 references/conventional-commits.md。
 allowed-tools: Bash
 metadata:
   author: claude-code-starter
-  version: 1.0.0
+  version: 1.1.0
   category: workflow
 ---
 
 # Git Workflow
 
-## コミットのルール
-- コミットメッセージは必ず英語で記述すること
-- Conventional Commits 形式に従うこと:
-  `<type>(<scope>): <subject>`
-  `<body>（必要な場合）`
-- type の種類:
-  - feat: 新機能
-  - fix: バグ修正
-  - docs: ドキュメントのみの変更
-  - refactor: リファクタリング
-  - test: テストの追加・修正
-  - chore: ビルド・設定ファイルの変更
-- subject は動詞の原形で始めること（Add / Fix / Update など）
-- subject は 50 文字以内
-- body には変更の背景・理由を記載すること
+コミット・プッシュ・ブランチ運用を **Conventional Commits（英語メッセージ）** で行う。
 
-## コミットの実行手順
-「コミットして」と依頼された場合：
-1. git status で未コミットの変更を確認
-2. git diff で変更内容を分析
-3. 変更内容から適切なコミットメッセージを英語で自動生成
-4. 複数の関心事にまたがる場合は複数コミットに分割
-5. git commit を実行
-6. コミット完了をレポートする
-※ コミット前のメッセージ確認は不要
+## 参照（Progressive disclosure）
 
-## プッシュの実行手順
-「プッシュして」と依頼された場合：
-1. git status で未プッシュのコミットを確認
-2. git branch --show-current で現在のブランチを取得
-3. git push origin <現在のブランチ名> を実行
-4. プッシュ完了をレポートする
+手順・type 一覧・禁止事項の**全文**は次を読むこと：
 
-## 禁止事項
-- force push は Human の明示的な許可なしに禁止
-- main ブランチへの直接コミットは禁止
-  （feature ブランチを作成して PR 経由で）
-- 機密情報を含むファイルのコミットは禁止
+- `references/conventional-commits.md`
+
+本文はトリガー判断用の要約のみとし、実行前に必ず上記を読む。

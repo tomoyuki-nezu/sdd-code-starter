@@ -4,49 +4,25 @@ description: >
   ドキュメントを作成・更新するとき。「README を更新して」
   「ドキュメントを書いて」「仕様書を整理して」などの
   依頼を受けたとき。日本語で統一されたスタイルで記述する。
+license: MIT
+compatibility: >
+  Claude Code。Read/Write で Markdown を編集。スタイルの全文は
+  references/style-guide.md。
 allowed-tools: Read Write
 metadata:
   author: claude-code-starter
-  version: 1.0.0
+  version: 1.1.0
   category: documentation
 ---
 
 # Document Writer
 
-## ドキュメント生成の基本ルール
+日本語ドキュメントの構成・機密の扱い・README セクション・記述スタイルを統一する。
 
-### 言語
-- ドキュメントは日本語で記述すること
-- コミットメッセージは英語（git-workflow Skill に従う）
+## 参照（Progressive disclosure）
 
-### 機密情報の取り扱い
-- クラウドアカウント ID → `<YOUR_ACCOUNT_ID>`
-- 認証用ロール/サービスアカウント → `<YOUR_ROLE>`
-- SSO / 認証 URL → `<YOUR_AUTH_URL>`
-- API エンドポイント URL → `<YOUR_API_URL>`
-- プロファイル名 → `<YOUR_PROFILE_NAME>`
+表・README セクション一覧・機密ルールの**全文**は次を読むこと：
 
-### ドキュメントの種類と配置
+- `references/style-guide.md`
 
-| 種類 | 配置先 | 説明 |
-|---|---|---|
-| 汎用ドキュメント | `docs/universal/` | どのプロジェクトでも使える |
-| プロジェクト固有 | `docs/project/` | このプロジェクト専用 |
-| README | ルート | プロジェクトの入口 |
-
-### README.md の標準セクション
-1. プロジェクト概要
-2. システム構成図
-3. 前提条件
-4. 初回セットアップ手順
-5. ローカル開発のワークフロー
-6. Claude Code を使った開発フロー
-7. デプロイ後の確認方法
-8. トラブルシューティング
-9. インフラリソース一覧
-
-### 記述スタイル
-- 箇条書きとテーブルを活用する
-- コマンド例は必ずコードブロックで記載
-- トラブルシューティングは「症状→原因→解決」の形式
-- システム構成図はテキスト図（ASCII art）で表現
+執筆前に必ず上記を読む。コミットメッセージは `git-workflow` Skill に従う。
