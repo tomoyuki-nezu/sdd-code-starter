@@ -59,7 +59,8 @@ claude-code-starter/
         ├── error-workflow.md
         ├── sdd-principles.md
         ├── security-settings.md
-        └── skills-authoring.md   # Anthropic Skills 公式準拠の書き方
+        ├── skills-authoring.md   # Anthropic Skills 公式準拠の書き方
+        └── context-handoff.md    # Cursor / Claude Code の再読み込み定型文
 ```
 
 ## 使い方
@@ -148,6 +149,7 @@ docs/universal/question-document-spec.md と
 | `docs/universal/new-project-bootstrap.md` | 新規プロジェクト初期化手順 |
 | `docs/universal/security-settings.md` | Claude Code セキュリティ設定ガイド |
 | `docs/universal/skills-authoring.md` | Skills 構成（Anthropic 公式 PDF 準拠） |
+| `docs/universal/context-handoff.md` | Cursor と Claude Code のコンテキスト引き継ぎ |
 
 ### プレースホルダ一覧（`CLAUDE.md` ・回答後に反映）
 
