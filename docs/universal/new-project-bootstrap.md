@@ -20,8 +20,8 @@ Cursor で `CLAUDE.md` を開き、プロジェクト固有設定セクション
 |---|---|---|
 | `<PROJECT_NAME>` | プロジェクト名 | タスク管理 API |
 | `<LANGUAGE>` | 使用言語 | Python 3.13 |
-| `<FRAMEWORK>` | フレームワーク | FastAPI / Express / Lambda |
-| `<DATASTORE>` | データストア | PostgreSQL / DynamoDB / MongoDB |
+| `<FRAMEWORK>` | フレームワーク | FastAPI / Express など |
+| `<DATASTORE>` | データストア | PostgreSQL / マネージド DB など |
 | `<FUNCTION_NAME>` | 関数/サービス名 | TasksService |
 
 ### Step 3：Claude Code に初期化プロンプトを渡す
@@ -124,9 +124,9 @@ git push -u origin main
 - [ ] `docker compose up -d` → ローカルサービス起動
 - [ ] ビルド成功（使用するビルドツールで確認）
 - [ ] ローカルサーバー起動成功
-- [ ] `ENV=local bash tests/e2e/test_api.sh` → 全テストパス
+- [ ] `ENV=local bash tests/e2e/test_api.sh`（またはプロジェクト定義のローカル E2E）→ 全テストパス
 - [ ] `git push` → GitHub Actions 成功
-- [ ] `ENV=production bash tests/e2e/test_api.sh` → 全テストパス
+- [ ] 本番相当環境への E2E は Human 承認と許可設定の上でのみ実施（コマンドはプロジェクトで定義）
 
 ## 汎用ファイルと固有ファイルの分類
 
@@ -134,8 +134,8 @@ git push -u origin main
 |---|---|---|
 | `CLAUDE.md` | 半汎用 | プロジェクト固有設定を書き換える |
 | `spec/constitution.md` | 汎用 | そのまま流用 |
-| `.claude/skills/common/` | 汎用 | そのまま流用 |
-| `.claude/skills/project/` | 固有 | スタックに合わせて修正 |
+| `.claude/skills/<name>/SKILL.md` | 汎用 | そのまま流用（各 Skill はフォルダ単位） |
+| `.claude/skills/project/` | 固有 | スタックに合わせて追加・削除（不要なテンプレートは削除可） |
 | `docker-compose.yml` | 汎用 | そのまま流用 |
 | `.gitignore` | 汎用 | そのまま流用 |
 | `docs/universal/` | 汎用 | そのまま流用 |

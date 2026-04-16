@@ -25,8 +25,8 @@
 - <!-- IaC 定義ファイル（例: template.yaml）を記載 -->
 - docs/universal/            : 汎用ドキュメント（プロジェクト横断）
 - docs/project/              : プロジェクト固有ドキュメント
-- .claude/skills/common/     : 汎用 Skills（プロジェクト横断）
-- .claude/skills/project/    : プロジェクト固有 Skills
+- .claude/skills/<name>/     : 各 Skill は kebab-case フォルダ＋SKILL.md（Anthropic 正式仕様）
+- .claude/skills/project/    : プロジェクト固有 Skills（同上）
 - .github/                   : GitHub Actions ワークフロー
 
 ### 命名規約
@@ -57,17 +57,17 @@
 ### Git Commit Rules
 - コミットメッセージは必ず英語で記述すること
 - Conventional Commits 形式に従うこと
-- 詳細は `.claude/skills/common/git-workflow.md` を参照
+- 詳細は `.claude/skills/git-workflow/SKILL.md` を参照
 
 ### Git Workflow
 - 「コミットして」→ 自律的にコミットを実行（確認不要）
 - 「プッシュして」→ 自律的にプッシュを実行
-- 詳細は `.claude/skills/common/git-workflow.md` を参照
+- 詳細は `.claude/skills/git-workflow/SKILL.md` を参照
 
 ### エラー修正ルール
 - 自動修正の前に必ずユーザーに報告・確認する
 - 自動修正は最大 3 回まで
-- 詳細は `.claude/skills/common/error-handling.md` を参照
+- 詳細は `.claude/skills/error-handling/SKILL.md` を参照
 
 ### 質問ドキュメントのルール
 
@@ -104,20 +104,40 @@
 
 ## Skills の読み込み設定
 
-### 汎用 Skills（`.claude/skills/common/`）
+### 汎用 Skills（`.claude/skills/<kebab-case>/SKILL.md`）
 どのプロジェクトでもそのまま使える共通ルール：
 
 | スキル | 用途 |
 |---|---|
-| `git-workflow.md` | Git コミット・プッシュの標準ルール |
-| `error-handling.md` | エラー解析・修正ワークフロー |
-| `test-workflow.md` | テスト実行・結果報告 |
-| `doc-writer.md` | ドキュメント生成スタイル |
-| `question-doc.md` | 質問ドキュメントによる意思決定フロー |
+| `git-workflow` | Git コミット・プッシュの標準ルール |
+| `error-handling` | エラー解析・修正ワークフロー |
+| `test-workflow` | テスト実行・結果報告 |
+| `doc-writer` | ドキュメント生成スタイル |
+| `question-doc` | 質問ドキュメントによる意思決定フロー |
 
 ### プロジェクト固有 Skills（`.claude/skills/project/`）
-<!-- プロジェクトに合わせてスキルを追加する -->
-<!-- 例: -->
-<!-- 例: -->
-<!-- | `python-fastapi.md` | FastAPI の構造・規約 | -->
-<!-- | `terraform.md` | Terraform の設計原則 | -->
+プロジェクトに合わせ `kebab-case/SKILL.md` を追加する（README の「カスタマイズ」を参照）。
+
+テンプレート例（このリポジトリに同梱）：
+
+| スキル | 用途 |
+|---|---|
+| `python-lambda` | Python サーバレス実装の規約（プロバイダは質問ドキュメントで確定） |
+| `sam-architect` | **AWS SAM を選んだ場合のみ** テンプレート・構成の指針 |
+
+---
+
+## セキュリティ設定
+
+### 設定ファイル
+.claude/settings.json にセキュリティのベースライン設定が含まれています。
+詳細は docs/universal/security-settings.md を参照してください。
+
+### 重要なルール
+- .env ファイル・シークレット・認証情報は絶対に読み取らないこと
+- rm -rf コマンドは実行しないこと
+- 本番クラウド環境への操作は Human の明示的な許可が必要
+- セキュリティ上の問題を発見した場合は即座に Human に報告すること
+
+### /permissions で定期確認
+セッション中に権限が蓄積していないか定期的に /permissions で確認すること。

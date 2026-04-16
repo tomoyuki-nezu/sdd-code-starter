@@ -37,9 +37,9 @@ SDD プロジェクトでは、3つのエージェント（ツール）が役割
 
 ## Claude Code のスキル体系
 
-### 汎用 Skills（`.claude/skills/common/`）
+### 汎用 Skills（`.claude/skills/<kebab-case>/SKILL.md`）
 
-どのプロジェクトでもそのまま使える共通ルール：
+どのプロジェクトでもそのまま使える共通ルール（Anthropic 正式仕様：フォルダ単位＋`SKILL.md`）：
 
 | スキル | トリガー | 内容 |
 |---|---|---|
@@ -47,8 +47,9 @@ SDD プロジェクトでは、3つのエージェント（ツール）が役割
 | `error-handling` | 「エラーを解析して」「原因を調べて」 | エラー修正ワークフロー |
 | `test-workflow` | 「テストして」「テストを実行して」 | テスト実行・結果報告 |
 | `doc-writer` | 「ドキュメントを書いて」「READMEを更新して」 | ドキュメント生成ルール |
+| `question-doc` | 複数判断・「回答を読んで実行して」 | 質問ドキュメントの作成と実行 |
 
-### プロジェクト固有 Skills（`.claude/skills/project/`）
+### プロジェクト固有 Skills（`.claude/skills/project/<kebab-case>/SKILL.md`）
 
 プロジェクトの技術スタックに依存するルール：
 
@@ -56,6 +57,8 @@ SDD プロジェクトでは、3つのエージェント（ツール）が役割
 |---|---|---|
 | （例）`python-fastapi` | `src/` のコードを扱う時 | フレームワーク固有の構造・規約 |
 | （例）`terraform` | IaC 定義を扱う時 | インフラ定義の設計原則 |
+| `python-lambda` | サーバレス Python を扱う時（任意） | スターター同梱テンプレート |
+| `sam-architect` | AWS SAM を採用した時のみ | スターター同梱テンプレート |
 
 ## エラー解析・修正ワークフローとの統合
 
