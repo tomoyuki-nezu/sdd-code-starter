@@ -112,4 +112,4 @@ SDD では複数の AI ツールが役割分担する：
 |---|---|---|
 | Cursor | 仕様書エディタ | YAML 仕様書の編集・レビュー |
 | Claude Code | コード生成エージェント | コード・テスト・インフラの生成、Git 操作 |
-| GitHub Actions | CI/CD | 自動テスト・自動デプロイ |
+| CI ホスト（例: GitHub Actions） | CI/CD | 自動テスト・自動デプロイ |

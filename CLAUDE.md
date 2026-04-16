@@ -4,11 +4,12 @@
 
 ## プロジェクト固有設定
 
-> 次のプロジェクトではこのセクションを書き換えること
+> このセクションのプレースホルダーは、**質問ドキュメントの回答が確定したあと**に反映する（コピー直後に Human が手で埋める必要はない）。
+> 反映は「回答を読んで実行して」のフローで Claude Code が行い、Human が内容を確認する。
 
 ### プロジェクト概要
 <PROJECT_NAME>
-<!-- プロジェクトの目的・概要を記載 -->
+<!-- プロジェクトの目的・概要を記載（質問ドキュメントの回答から転記） -->
 
 ### 技術スタック
 - 言語: <LANGUAGE>
@@ -16,7 +17,7 @@
 - IaC: <IAC_TOOL>
 - データストア: <DATASTORE>
 - テスト: <TEST_FRAMEWORK>
-- CI/CD: GitHub Actions
+- CI/CD: <CI_CD_TOOL>
 
 ### ディレクトリ構成
 - spec/                      : 仕様書（Single Source of Truth）
@@ -27,7 +28,7 @@
 - docs/project/              : プロジェクト固有ドキュメント
 - .claude/skills/<name>/     : 各 Skill は kebab-case フォルダ＋SKILL.md（Anthropic 正式仕様）
 - .claude/skills/project/    : プロジェクト固有 Skills（同上）
-- .github/                   : GitHub Actions ワークフロー
+- .github/ 等                : CI/CD 定義（ホストは質問ドキュメントで決定。例: GitHub Actions ならここ）
 
 ### 命名規約
 <!-- プロジェクトの命名規約を記載 -->
@@ -47,6 +48,12 @@
 ## 汎用設定
 
 > 次のプロジェクトでもそのまま使える共通ルール
+
+### 新規プロジェクト開始時（質問ファースト）
+
+- Human が「まず質問して」「新しいプロジェクトを始めます」などと伝えたら、**仕様書・ソースコード・CI 定義の生成に着手する前に**、`.claude/questions/templates/new-project-template.md` と `docs/universal/question-document-spec.md` に従い、**質問ドキュメント**を `.claude/questions/YYYYMMDD-<topic>.md` に作成する。
+- 質問ドキュメントの回答が揃うまで、`CLAUDE.md` のプロジェクト固有セクションは **プレースホルダのままでよい**（推測で埋めない）。
+- Human が回答を記入し「**回答を読んで実行して**」と伝えたら、`question-doc` Skill の手順に従い解釈・サマリー・承認を経てから実行する。実行内容に **このセクションのプレースホルダ更新** を含めること。
 
 ### コード生成ルール
 - すべての関数に型アノテーションを付与すること
